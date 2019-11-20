@@ -4,8 +4,13 @@ class RecipeList extends StatelessWidget {
   const RecipeList();
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: const Text('recipe'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Recipe List'),
+      ),
+      body: Center(
+        child: const Text('recipe'),
+      ),
     );
   }
 }
