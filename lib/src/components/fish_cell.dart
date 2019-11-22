@@ -17,7 +17,7 @@ class FishCell extends StatelessWidget {
           ),
           Expanded(
             flex: 3,
-            child: fishName(),
+            child: fishInfo('hoge', 'phrase'),
           ),
           Expanded(
             flex: 1,
@@ -34,20 +34,25 @@ class FishCell extends StatelessWidget {
     );
   }
 
-  Widget fishName() {
+  Widget fishInfo(String name, String phrase) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
           padding: const EdgeInsets.only(top: 8),
-          child: const Text('アイナメ',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              )),
+          child: Text(
+            name,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         Container(
-          child: const Text('背面いっぱいに広がる一枚びれ'),
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            phrase,
+          ),
         ),
       ],
     );
