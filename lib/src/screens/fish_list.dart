@@ -16,7 +16,10 @@ class FishList extends StatelessWidget {
           if (i.isOdd) {
             return const Divider();
           } else {
-            return const FishCell();
+            return const FishCell(
+              fishName: 'hoge',
+              fishPhrase: 'phrase',
+            );
           }
         },
       ),

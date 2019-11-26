@@ -7,8 +7,9 @@ class CellImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(right: 12),
-      height: 100,
+      height: 400,
       width: 100,
+      color: Colors.green[200],
     );
   }
 }
