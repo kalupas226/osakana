@@ -1,5 +1,4 @@
 class FishModel {
-
   FishModel.fromJson(Map<String, dynamic> parsedJson)
       : id = parsedJson['id'],
         name = parsedJson['name'],
