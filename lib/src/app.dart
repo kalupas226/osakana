@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'blocs/fish_provider.dart';
 import 'screens/favorite_list.dart';
 import 'screens/fish_list.dart';
 import 'screens/info.dart';
@@ -7,12 +8,14 @@ import 'screens/recipe_list.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'OsakanaBiyori',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return FishProvider(
+      child: MaterialApp(
+        title: 'OsakanaBiyori',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(),
     );
   }
 }

@@ -1,56 +1,66 @@
 import 'package:flutter/material.dart';
+import '../blocs/fish_provider.dart';
 import '../components/cell_image.dart';
+import '../models/fish_model.dart';
 
 class FishCell extends StatelessWidget {
   const FishCell({
     Key key,
-    @required this.fishName,
-    @required this.fishPhrase,
-  })  : assert(fishName != null),
-        assert(fishPhrase != null),
+    @required this.index,
+  })  : assert(index != null),
         super(key: key);
 
-  final String fishName;
-  final String fishPhrase;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          const Expanded(
-            flex: 2,
-            child: CellImage(),
-          ),
-          Expanded(
-            flex: 3,
-            child: fishInfo(),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              alignment: Alignment.centerRight,
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey,
+    final FishBloc bloc = FishProvider.of(context);
+    return StreamBuilder(
+      stream: bloc.fishes,
+      builder: (BuildContext context, AsyncSnapshot<Map<int, FishModel>> snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        return Container(
+          height: 100,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const Expanded(
+                flex: 2,
+                child: CellImage(),
               ),
-            ),
+              Expanded(
+                flex: 3,
+                child: fishInfo(snapshot.data[index].name, snapshot.data[index].phrase),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget fishInfo() {
+  Widget fishInfo(String name, String phrase) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
           padding: const EdgeInsets.only(top: 8),
           child: Text(
-            fishName,
+            name,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -60,7 +70,7 @@ class FishCell extends StatelessWidget {
         Container(
           margin: const EdgeInsets.only(top: 8),
           child: Text(
-            fishPhrase,
+            phrase,
           ),
         ),
       ],

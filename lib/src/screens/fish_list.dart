@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../blocs/fish_provider.dart';
 import '../components/fish_cell.dart';
 
 class FishList extends StatelessWidget {
@@ -6,6 +7,8 @@ class FishList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fishBloc = FishProvider.of(context);
+    fishBloc.fetchFishes();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fish List'),
@@ -16,10 +19,7 @@ class FishList extends StatelessWidget {
           if (i.isOdd) {
             return const Divider();
           } else {
-            return const FishCell(
-              fishName: 'hoge',
-              fishPhrase: 'phrase',
-            );
+            return FishCell(index: i);
           }
         },
       ),

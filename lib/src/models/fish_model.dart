@@ -1,24 +1,22 @@
 class FishModel {
   FishModel.fromJson(Map<String, dynamic> parsedJson)
-      : id = parsedJson['id'],
-        name = parsedJson['name'],
-        hiraganaName = parsedJson['hiraganaName'],
-        kanziName = parsedJson['kanziName'],
-        areaName = parsedJson['areaName'],
-        phrase = parsedJson['phrase'],
-        description = parsedJson['description'],
-        category = parsedJson['category'],
-        length = parsedJson['length'],
-        area = parsedJson['area'],
-        areaDetail = parsedJson['areaDetail'],
-        catchSeason = parsedJson['catchSeason'],
-        catchSeasonDetail = parsedJson['catchSeasonDetail'],
-        rare = parsedJson['rare'],
-        url = parsedJson['url'],
-        imageUrl = parsedJson['imageUrl'],
-        aname = parsedJson['aname'];
+      : name = parsedJson['name']['value'],
+        hiraganaName = parsedJson['hname']['value'],
+        kanziName = parsedJson['kname']['value'],
+        areaName = parsedJson['areaName']['value'],
+        phrase = parsedJson['phrase']['value'],
+        description = parsedJson['description']['value'],
+        category = parsedJson['category']['value'],
+        length = parsedJson['length']['value'],
+        area = parsedJson['area']['value'],
+        areaDetail = parsedJson['areaMore']['value'],
+        catchSeason = parsedJson['catchSeason']['value'],
+        catchSeasonDetail = parsedJson['catchSeasonMore']['value'],
+        rare = parsedJson['rare']['value'],
+        url = parsedJson['url']['value'],
+        imageUrl = parsedJson['img']['value'],
+        aname = parsedJson['aname']['value'];
 
-  final int id;
   final String name;
   final String hiraganaName;
   final String kanziName;
