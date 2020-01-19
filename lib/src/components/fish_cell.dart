@@ -1,55 +1,43 @@
 import 'package:flutter/material.dart';
-import '../blocs/fish_provider.dart';
 import '../components/cell_image.dart';
 import '../models/fish_model.dart';
 
 class FishCell extends StatelessWidget {
   const FishCell({
     Key key,
-    @required this.index,
-  })  : assert(index != null),
+    @required this.fish,
+  })  : assert(fish != null),
         super(key: key);
 
-  final int index;
+  final FishModel fish;
 
   @override
   Widget build(BuildContext context) {
-    final FishBloc bloc = FishProvider.of(context);
-    return StreamBuilder(
-      stream: bloc.fishes,
-      builder: (BuildContext context, AsyncSnapshot<Map<int, FishModel>> snapshot) {
-        if (!snapshot.hasData) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        return Container(
-          height: 100,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const Expanded(
-                flex: 2,
-                child: CellImage(),
-              ),
-              Expanded(
-                flex: 3,
-                child: fishInfo(snapshot.data[index].name, snapshot.data[index].phrase),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  alignment: Alignment.centerRight,
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ],
+    return Container(
+      height: 100,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          const Expanded(
+            flex: 2,
+            child: CellImage(),
           ),
-        );
-      },
+          Expanded(
+            flex: 3,
+            child: fishInfo(fish.name, fish.phrase),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
