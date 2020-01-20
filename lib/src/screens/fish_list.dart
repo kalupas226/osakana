@@ -8,7 +8,7 @@ class FishList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fishBloc = FishProvider.of(context);
+    final FishBloc fishBloc = FishProvider.of(context);
     fishBloc.fetchFishes();
     return Scaffold(
       appBar: AppBar(
