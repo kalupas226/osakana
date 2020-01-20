@@ -11,7 +11,7 @@ class RecipeList extends StatelessWidget {
     recipeBloc.fetchRecipes();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fish List'),
+        title: const Text('Recipe List'),
       ),
       body: buildList(recipeBloc),
     );
