@@ -1,22 +1,20 @@
 class RecipeModel {
   RecipeModel.fromJson(Map<String, dynamic> parsedJson)
-      : id = parsedJson['id'],
-        name = parsedJson['name'],
-        hiraganaName = parsedJson['hiraganaName'],
-        katakanaName = parsedJson['katakanaName'],
-        cookMethod = parsedJson['cookMethod'],
-        ingredient = parsedJson['ingredient'],
-        instruction = parsedJson['instruction'],
-        ingredientsDetail = parsedJson['ingredientsDetail'],
+      : name = parsedJson['name'],
+        hiraganaName = parsedJson['hname'],
+        katakanaName = parsedJson['kname'],
+        cookMethod = parsedJson['method'],
+        ingredient = parsedJson['ingredient'].split(',', 0),
+        instruction = parsedJson['instruction'].split(',', 0),
+        ingredientsDetail = parsedJson['ingredientsinInstructions'].split(',', 0),
         url = parsedJson['url'],
-        imageUrl = parsedJson['imageUrl'],
-        difficulty = parsedJson['difficulty'],
+        imageUrl = parsedJson['img'],
+        difficulty = parsedJson['category'],
         attributionNameUri = parsedJson['attributionNameUri'],
         attributionName = parsedJson['attributionName'],
-        relatedFish = parsedJson['relatedFish'],
-        phrase = parsedJson['phrase'];
+        relatedFish = parsedJson['seeAlsoName'],
+        point = parsedJson['point'];
 
-  final int id;
   final String name;
   final String hiraganaName;
   final String katakanaName;
@@ -30,5 +28,5 @@ class RecipeModel {
   final String attributionNameUri;
   final String attributionName;
   final List<String> relatedFish;
-  final String phrase;
+  final String point;
 }
